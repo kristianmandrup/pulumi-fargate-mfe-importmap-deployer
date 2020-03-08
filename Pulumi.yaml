@@ -1,0 +1,3 @@
+name: importmap-deployer
+runtime: nodejs
+description: Importmap deployer for micro frontends

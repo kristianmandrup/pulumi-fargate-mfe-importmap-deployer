@@ -1,0 +1,2 @@
+config:
+  aws:project: micro-frontend-app
