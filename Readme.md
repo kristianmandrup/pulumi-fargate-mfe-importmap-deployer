@@ -61,11 +61,11 @@ $ EXPORT AWS_REGISTRY_NAME=micro-frontends
 $ aws ecr create-repository --repository-name $AWS_REGISTRY_NAME
 {
   "repository": {
-        "repositoryArn": "arn:aws:ecr:eu-central-1:123456789012:repository/micro-frontends",
-        "registryId": "123456789012",
-        "repositoryName": "micro-frontends",
-        "repositoryUri": "123456789012.dkr.ecr.eu-central-1.amazonaws.com/randserver",
-      "createdAt": 1543162198.0
+    "repositoryArn": "arn:aws:ecr:eu-central-1:123456789012:repository/micro-frontends",
+    "registryId": "123456789012",
+    "repositoryName": "micro-frontends",
+    "repositoryUri": "123456789012.dkr.ecr.eu-central-1.amazonaws.com/randserver",
+    "createdAt": 1543162198.0
   }
 }
 ```
@@ -110,6 +110,24 @@ $ pulumi up
 ...
 
 Permalink: https://app.pulumi.com/username/importmap-deployer/dev/updates/1  
+```
+
+### Configuring importmap-deployer
+
+The default `conf.js` file of the image, currently has locations of this form:
+
+```js
+  locations: {
+    reactMf: 'google://react.microfrontends.app/importmap.json',
+  }
+```
+
+Each location entry should point to an actual storage bucket entry on AWS.
+
+```js
+  locations: {
+    reactMf: 's3://react.microfrontends.app/importmap.json',
+  }
 ```
 
 ### Pulumi Configuration
