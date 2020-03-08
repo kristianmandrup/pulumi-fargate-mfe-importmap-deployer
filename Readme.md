@@ -1,4 +1,4 @@
-# Pulumi stack for importmap deployer on AWS
+# Pulumi stack for deploying importmap-deployer on AWS Fargate
 
 Pulumi AWS Fargate deployment for [importmap-deployer](https://github.com/single-spa/import-map-deployer) used by [single-spa](https://single-spa.js.org/) [Micro Frontends](https://micro-frontends.org/)
 This Pulumi stack is designed to make it easy to set up AWS infrastructure for [importmap-deployer](https://github.com/single-spa/import-map-deployer).
