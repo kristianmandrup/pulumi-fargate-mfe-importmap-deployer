@@ -31,8 +31,9 @@ The image `importmap-deployer` can be found in the folder of the same name.
 ## Quickstart
 
 1. Install dependencies
-2. Push image to ECR Container Registry (via docker)
-3. Run `pulumi up` to create stack on AWS and deploy image on service
+2. Configure `importmap-deployer` image
+3. Push image to ECR Container Registry (via docker)
+4. Run `pulumi up` to create stack on AWS and deploy image on service
 
 ### Install
 
@@ -41,6 +42,17 @@ Install dependencies
 ```sh
 $ npm i
 # dependencies
+```
+
+### Configure importmap-deployer
+
+Edit the `conf.js` file of the image to point to bucket entries.
+Each location entry should point to an actual storage bucket entry on AWS which contains an importmap JSON file.
+
+```js
+  locations: {
+    reactMf: 's3://react.microfrontends.app/importmap.json',
+  }
 ```
 
 ### Push importmap-deployer image to ECR
@@ -112,17 +124,6 @@ $ pulumi up
 ...
 
 Permalink: https://app.pulumi.com/username/importmap-deployer/dev/updates/1  
-```
-
-### Configuring importmap-deployer
-
-Edit the `conf.js` file of the image to point to bucket entries.
-Each location entry should point to an actual storage bucket entry on AWS which contains an importmap JSON file.
-
-```js
-  locations: {
-    reactMf: 's3://react.microfrontends.app/importmap.json',
-  }
 ```
 
 ### Pulumi Configuration
