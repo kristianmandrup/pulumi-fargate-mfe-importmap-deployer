@@ -114,15 +114,8 @@ Permalink: https://app.pulumi.com/username/importmap-deployer/dev/updates/1
 
 ### Configuring importmap-deployer
 
-The default `conf.js` file of the image, currently has locations of this form:
-
-```js
-  locations: {
-    reactMf: 'google://react.microfrontends.app/importmap.json',
-  }
-```
-
-Each location entry should point to an actual storage bucket entry on AWS.
+Edit the `conf.js` file of the image to point to bucket entries.
+Each location entry should point to an actual storage bucket entry on AWS which contains an importmap JSON file.
 
 ```js
   locations: {
