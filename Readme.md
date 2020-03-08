@@ -46,9 +46,9 @@ $ npm i
 Define environment variables
 
 ```sh
-$ EXPORT $AWS_ACCOUNT_ID=[your account id]
-$ EXPORT $AWS_REGION_ID=[region id such as: eu-central-1]
-$ EXPORT $FARGATE_SERVICE_NAME=importmap-deployer
+$ EXPORT AWS_ACCOUNT_ID=[your account id]
+$ EXPORT AWS_REGION_ID=eu-central-1
+$ EXPORT FARGATE_SERVICE_NAME=importmap-deployer
 # ...
 ```
 
