@@ -1,16 +1,14 @@
-# AWS Fargate
+# Pulumi stack for importmap deployer on AWS
 
-AWS Fargate deployment for [importmap-deployer](https://github.com/single-spa/import-map-deployer) used by [single-spa](https://single-spa.js.org/) [Micro Frontends](https://micro-frontends.org/)
+Pulumi AWS Fargate deployment for [importmap-deployer](https://github.com/single-spa/import-map-deployer) used by [single-spa](https://single-spa.js.org/) [Micro Frontends](https://micro-frontends.org/)
+This Pulumi stack is designed to make it easy to set up AWS infrastructure for [importmap-deployer](https://github.com/single-spa/import-map-deployer).
+The importmap deployer is a service required for single-spa Micro Frontends to deploy importmaps.
 
 ## Prerequisites
 
 Ensure you have [downloaded and installed the Pulumi CLI](https://www.pulumi.com/docs/get-started/install/).
 
-## Pulumi stack for importmap deployer on AWS
-
-The importmap deployer is a service required for single-spa Micro Frontends to deploy importmaps
-
-This Pulumi stack is designed to make it easy to set up AWS infrastructure for [importmap-deployer](https://github.com/single-spa/import-map-deployer)
+## Stack overview
 
 The stack will:
 
@@ -76,6 +74,7 @@ Now create an ENV variable for the generated `registryId` to use as a reference 
 
 ```sh
 $ EXPORT $AWS_REGISTRY_ID=123456789012
+# ...
 ```
 
 Optionally set up a lifecycle policy to clean up old images
@@ -83,12 +82,14 @@ Optionally set up a lifecycle policy to clean up old images
 ```sh
 $ EXPORT $MAX_IMG_COUNT=100
 $ aws ecr put-lifecycle-policy --registry-id $AWS_REGISTRY_ID --repository-name $AWS_REGISTRY_NAME --lifecycle-policy-text '{"rules":[{"rulePriority":10,"description":"Expire old images","selection":{"tagStatus":"any","countType":"imageCountMoreThan","countNumber":$MAX_IMG_COUNT},"action":{"type":"expire"}}]}'
+# ...
 ```
 
 Login to registry
 
 ```sh
 $ $(aws ecr get-login --registry-ids $AWS_REGISTRY_ID --no-include-email)
+# ...
 ```
 
 Build image and push to ECR container registry
@@ -97,6 +98,7 @@ Build image and push to ECR container registry
 $ EXPORT IMG_VERSION=0.0.1
 $ docker build -t importmap-deployer
 $ docker push $AWS_REGISTRY_ID.dkr.ecr.$AWS_REGION_ID.amazonaws.com/$AWS_REGISTRY_NAME:$IMG_VERSION
+# ...
 ```
 
 ## Run
