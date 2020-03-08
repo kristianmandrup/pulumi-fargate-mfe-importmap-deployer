@@ -126,6 +126,29 @@ $ pulumi up
 Permalink: https://app.pulumi.com/username/importmap-deployer/dev/updates/1  
 ```
 
+## Upload initial importmap.json
+
+```sh
+$ EXPORT AWS_ACCESS_KEY_ID= ...
+$ EXPORT AWS_SECRET_ACCESS_KEY=...
+```
+
+Create new Python virtual environment and activate it, then install requirements (dependencies)
+
+```sh
+$ virtualenv path/to/my/virtual-env
+$ source  path/to/my/virtual-env/bin/activate
+$ pip3 install -r requirements.txt
+# ...
+```
+
+Now run `upload-s3` script with the file to be uploaded in the S3 bucket
+
+```sh
+$ python upload-s3.py importmap.json
+# ...
+```
+
 ### Pulumi Configuration
 
 To control the resources being built, use can use [Pulumi Config](https://www.pulumi.com/docs/intro/concepts/config/)
